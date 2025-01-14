@@ -9,15 +9,17 @@ const HomePage = () => {
     const fetchPostsData = async () => {
       try {
         const indexResponse = await fetch(
-          `${process.env.PUBLIC_URL}/posts/index.json` // Corrected URL
+          `${process.env.PUBLIC_URL}/posts/index.json`
         );
         if (!indexResponse.ok) {
           throw new Error("Failed to load post metadata");
         }
         const postsData = await indexResponse.json();
+        console.log("Posts fetched:", postsData); // Add this log to check if the posts are fetched
         setPosts(postsData);
       } catch (err) {
         setError("Failed to load posts");
+        console.error("Error fetching posts:", err); // Log the error if it occurs
       }
     };
 
@@ -37,6 +39,8 @@ const HomePage = () => {
       </header>
       <main className="mt-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {console.log("Rendering posts:", posts)}{" "}
+          {/* Add this log to see the posts in the component */}
           {posts.map((post, index) => (
             <div
               className="bg-white rounded-lg shadow-md p-8 hover:shadow-lg transition-all duration-300"
@@ -47,7 +51,7 @@ const HomePage = () => {
               </h2>
               <p className="text-gray-600 mt-5">{post.excerpt}</p>
               <Link
-                to={`/post/${post.slug}`} // Link to the post page using slug
+                to={`/post/${post.slug}`}
                 className="text-primary mt-4 inline-block hover:text-blue-500 hover:no-underline"
               >
                 Read more

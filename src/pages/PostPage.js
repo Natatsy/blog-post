@@ -4,42 +4,29 @@ import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 
 const PostPage = () => {
-  const { slug } = useParams(); // Changed to use slug from useParams()
-
+  const { postId } = useParams();
   const [postContent, setPostContent] = useState("");
-  const [post, setPost] = useState(null);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchPostData = async () => {
+    const fetchData = async () => {
       try {
-        const indexResponse = await fetch(
-          `${process.env.PUBLIC_URL}/posts/index.json` // Correct URL
+        const response = await fetch(
+          `${process.env.PUBLIC_URL}/posts/${postId}.md`
         );
-        if (!indexResponse.ok) {
-          throw new Error("Failed to load post metadata");
+        if (!response.ok) {
+          throw new Error("Failed to fetch markdown file");
         }
-        const postsData = await indexResponse.json();
-        const currentPost = postsData.find((post) => post.slug === slug);
-        setPost(currentPost);
-
-        if (currentPost) {
-          const postResponse = await fetch(
-            `${process.env.PUBLIC_URL}/md/${slug}.md` // Corrected path
-          );
-          if (!postResponse.ok) {
-            throw new Error("Post content not found");
-          }
-          const text = await postResponse.text();
-          setPostContent(text);
-        }
+        const text = await response.text();
+        setPostContent(text);
       } catch (err) {
-        setError("Failed to load post content");
+        console.error("Error fetching markdown:", err);
+        setError(err.message);
       }
     };
 
-    fetchPostData();
-  }, [slug]);
+    fetchData();
+  }, [postId]);
 
   if (error) {
     return <div>Error: {error}</div>;
@@ -50,7 +37,7 @@ const PostPage = () => {
       <main className="container mx-auto px-3">
         <article className="bg-white p-12 rounded-lg shadow-xl max-w-3xl mx-auto">
           <h1 className="text-3xl font-semibold text-gray-700 mb-8 text-center">
-            {post ? post.title : "Post not found"}
+            {postId.replace("-", " ").toUpperCase()}
           </h1>
           <ReactMarkdown
             rehypePlugins={[rehypeRaw]}
@@ -64,4 +51,4 @@ const PostPage = () => {
   );
 };
 
-export default PostPage;
+export default PostPage; // <-- Make sure this line exists
