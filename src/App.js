@@ -1,20 +1,30 @@
-// src/App.js
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import PostPage from "./pages/PostPage";
+import Header from "./components/Header"; // Import Header
+import Footer from "./components/Footer"; // Import Footer
 
-function App() {
+const App = () => {
   return (
     <Router>
-      <div className="container mx-auto">
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/posts/:slug" element={<PostPage />} />
-        </Routes>
+      <div>
+        {/* Header */}
+        <Header />
+
+        {/* Main Content */}
+        <main className="min-h-screen">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/post/:postId" element={<PostPage />} />
+          </Routes>
+        </main>
+
+        {/* Footer */}
+        <Footer />
       </div>
     </Router>
   );
-}
+};
 
 export default App;

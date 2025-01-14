@@ -1,12 +1,19 @@
 /** @type {import('tailwindcss').Config} */
-// tailwind.config.js
 module.exports = {
+  content: ["./src/**/*.{html,js,jsx,ts,tsx}"],
   theme: {
     extend: {
       colors: {
-        "custom-blue": "#4a90e2",
+        primary: "#3490d8",
+        secondary: "#ffed4a",
+        darkgray: "#2d2d2d",
+        lightgray: "#f4f4f4",
+      },
+      fontFamily: {
+        sans: ["Inter", "Helvetica", "Arial", "sans-serif"],
+        serif: ["Georgia", "serif"],
       },
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/typography")],
 };

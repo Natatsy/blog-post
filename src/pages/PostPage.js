@@ -1,25 +1,58 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import marked from "marked";
+import ReactMarkdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
+import Header from "../components/Header"; // Import Header
+import Footer from "../components/Footer"; // Import Footer
 
 const PostPage = () => {
-  const { slug } = useParams();
-  const [content, setContent] = useState("");
+  const { postId } = useParams();
+  const [postContent, setPostContent] = useState("");
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    // For simplicity, using static content, but you can read a .md file dynamically
-    const fetchPost = async () => {
-      const response = await fetch(`/posts/${slug}.md`);
-      const text = await response.text();
-      setContent(marked(text));
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          `${process.env.PUBLIC_URL}/posts/${postId}.md`
+        );
+        if (!response.ok) {
+          throw new Error("Failed to fetch markdown file");
+        }
+
+        const text = await response.text();
+        setPostContent(text);
+      } catch (err) {
+        console.error("Error fetching markdown:", err);
+        setError(err.message);
+      }
     };
 
-    fetchPost();
-  }, [slug]);
+    fetchData();
+  }, [postId]);
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
 
   return (
-    <div className="p-6">
-      <div dangerouslySetInnerHTML={{ __html: content }} />
+    <div className="post-page bg-gray-50 py-12">
+      <main className="container mx-auto px-3">
+        <article className="bg-white p-12 rounded-lg shadow-xl max-w-3xl mx-auto">
+          {/* Post Title */}
+          <h1 className="text-3xl font-semibold text-gray-700 mb-8 text-center">
+            {postId.replace("-", " ").toUpperCase()}
+          </h1>
+
+          {/* Post Content */}
+          <ReactMarkdown
+            rehypePlugins={[rehypeRaw]}
+            className="prose lg:prose-xl"
+          >
+            {postContent}
+          </ReactMarkdown>
+        </article>
+      </main>
     </div>
   );
 };
