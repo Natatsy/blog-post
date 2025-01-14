@@ -1,21 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-const HomePage = () => {
-  const [posts, setPosts] = useState([]);
+// Assuming you have a JSON file (index.json) in src/posts to manage your post metadata
+import postsData from "../posts/index.json";
 
-  useEffect(() => {
-    // Fetch posts list from the public/posts/index.json file
-    fetch("/posts/index.json")
-      .then((response) => response.json())
-      .then((data) => setPosts(data));
-  }, []);
+const HomePage = () => {
+  const [posts, setPosts] = useState(postsData); // Initialize state with imported data
 
   return (
     <div className="bg-lightgray min-h-screen py-12 px-6 md:px-20">
       <header className="text-center">
         <h1 className="text-4xl font-serif text-darkgray mb-6">
-          {" "}
           A place to share my thoughts and stories.
         </h1>
       </header>
