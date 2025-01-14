@@ -1,0 +1,17 @@
+[
+  {
+    "title": "The Importance of Learning JavaScript for Web Development",
+    "excerpt": "In today's digital age, programming languages have become essential skills for anyone looking to build a career in technology, and one language that stands out among the rest is JavaScript. ",
+    "slug": "first-post"
+  },
+  {
+    "title": "My Experience with React.js",
+    "excerpt": "One of the most exciting technologies I’ve learned recently is React.js. React is a powerful JavaScript library that helps developers build user interfaces for web applications. ",
+    "slug": "second-post"
+  },
+  {
+    "title": "Why I Recommend FreeCodeCamp as a Learning Resource",
+    "excerpt": "When I started learning web development, I didn’t know where to begin. There are so many online resources available, but I was looking for something that was not only easy to understand but also free.  ",
+    "slug": "third-post"
+  }
+]
