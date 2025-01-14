@@ -9,8 +9,8 @@ const HomePage = () => {
     const fetchPostsData = async () => {
       try {
         const indexResponse = await fetch(
-          `${process.env.PUBLIC_URL}/posts/index.json`
-        ); // Fetch the post metadata
+          `${process.env.PUBLIC_URL}/posts/index.json` // Corrected URL
+        );
         if (!indexResponse.ok) {
           throw new Error("Failed to load post metadata");
         }
@@ -47,7 +47,7 @@ const HomePage = () => {
               </h2>
               <p className="text-gray-600 mt-5">{post.excerpt}</p>
               <Link
-                to={`/post/${post.slug}`}
+                to={`/post/${post.slug}`} // Link to the post page using slug
                 className="text-primary mt-4 inline-block hover:text-blue-500 hover:no-underline"
               >
                 Read more

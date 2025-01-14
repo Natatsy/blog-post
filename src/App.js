@@ -16,7 +16,8 @@ const App = () => {
         <main className="min-h-screen">
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/post/:postId" element={<PostPage />} />
+            {/* Change the route to use "slug" instead of "postId" */}
+            <Route path="/post/:slug" element={<PostPage />} />
           </Routes>
         </main>
 

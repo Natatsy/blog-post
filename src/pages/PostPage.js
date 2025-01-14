@@ -4,10 +4,7 @@ import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 
 const PostPage = () => {
-  const { postId } = useParams();
-
-  // Log the postId to check if it's correct
-  console.log("Current postId:", postId);
+  const { slug } = useParams(); // Changed to use slug from useParams()
 
   const [postContent, setPostContent] = useState("");
   const [post, setPost] = useState(null);
@@ -17,19 +14,19 @@ const PostPage = () => {
     const fetchPostData = async () => {
       try {
         const indexResponse = await fetch(
-          `${process.env.PUBLIC_URL}/posts/index.json`
-        ); // Fetch post metadata
+          `${process.env.PUBLIC_URL}/posts/index.json` // Correct URL
+        );
         if (!indexResponse.ok) {
           throw new Error("Failed to load post metadata");
         }
         const postsData = await indexResponse.json();
-        const currentPost = postsData.find((post) => post.slug === postId); // Match the slug
+        const currentPost = postsData.find((post) => post.slug === slug);
         setPost(currentPost);
 
         if (currentPost) {
           const postResponse = await fetch(
-            `${process.env.PUBLIC_URL}/posts/${postId}.md`
-          ); // Fetch markdown content
+            `${process.env.PUBLIC_URL}/md/${slug}.md` // Corrected path
+          );
           if (!postResponse.ok) {
             throw new Error("Post content not found");
           }
@@ -42,7 +39,7 @@ const PostPage = () => {
     };
 
     fetchPostData();
-  }, [postId]);
+  }, [slug]);
 
   if (error) {
     return <div>Error: {error}</div>;
