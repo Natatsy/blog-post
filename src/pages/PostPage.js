@@ -12,7 +12,6 @@ const PostPage = () => {
   useEffect(() => {
     const fetchPostContent = async () => {
       try {
-        // Fetch the markdown file from the public directory
         const response = await fetch(`/posts/${postId}.md`);
         if (!response.ok) {
           throw new Error("Post not found");
