@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import postsData from "../posts/index.json";
+import postsData from "../posts/index.json"; // Importing from src/posts/index.json
 
 const HomePage = () => {
   const [posts] = useState(postsData);

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
+import postsData from "../posts/index.json"; // Importing from src/posts/index.json
 
 const PostPage = () => {
   const { postId } = useParams();
@@ -26,6 +27,9 @@ const PostPage = () => {
     fetchPostContent();
   }, [postId]);
 
+  // Find the post by slug in the postsData array
+  const post = postsData.find((post) => post.slug === postId);
+
   if (error) {
     return <div>Error: {error}</div>;
   }
@@ -35,7 +39,7 @@ const PostPage = () => {
       <main className="container mx-auto px-3">
         <article className="bg-white p-12 rounded-lg shadow-xl max-w-3xl mx-auto">
           <h1 className="text-3xl font-semibold text-gray-700 mb-8 text-center">
-            {postId.replace("-", " ").toUpperCase()}
+            {post ? post.title : "Post not found"}
           </h1>
           <ReactMarkdown
             rehypePlugins={[rehypeRaw]}
