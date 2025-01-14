@@ -3,23 +3,23 @@ import { useParams } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 
-// Dynamically import markdown content from src directory
-import firstPostContent from "../posts/first-post.md";
-import secondPostContent from "../posts/second-post.md";
-
 const PostPage = () => {
   const { postId } = useParams();
   const [postContent, setPostContent] = useState("");
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchPostContent = () => {
-      if (postId === "first-post") {
-        setPostContent(firstPostContent);
-      } else if (postId === "second-post") {
-        setPostContent(secondPostContent);
-      } else {
-        setError("Post not found");
+    const fetchPostContent = async () => {
+      try {
+        // Fetch the markdown file from the public directory
+        const response = await fetch(`/posts/${postId}.md`);
+        if (!response.ok) {
+          throw new Error("Post not found");
+        }
+        const text = await response.text();
+        setPostContent(text);
+      } catch (err) {
+        setError("Failed to load post content");
       }
     };
 
