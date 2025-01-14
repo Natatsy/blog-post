@@ -2,9 +2,14 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
+import postsData from "../posts/index.json"; // Import the JSON data directly
 
 const PostPage = () => {
   const { postId } = useParams();
+
+  // Log the postId to check if it's correct
+  console.log("Current postId:", postId);
+
   const [postContent, setPostContent] = useState("");
   const [post, setPost] = useState(null);
   const [error, setError] = useState(null);
@@ -12,22 +17,15 @@ const PostPage = () => {
   useEffect(() => {
     const fetchPostData = async () => {
       try {
-        // Fetch index.json from the public/posts directory
-        const indexResponse = await fetch("/posts/index.json");
-        if (!indexResponse.ok) {
-          throw new Error("Failed to load post metadata");
-        }
-        const postsData = await indexResponse.json();
-        const currentPost = postsData.find((post) => post.slug === postId);
+        // Find the current post from the imported data
+        const currentPost = postsData.find((post) => post.slug === postId); // Match the slug
         setPost(currentPost);
 
-        // Fetch the Markdown content of the specific post
-        const postResponse = await fetch(`/posts/${postId}.md`);
-        if (!postResponse.ok) {
-          throw new Error("Post content not found");
+        if (currentPost) {
+          // Dynamically import the markdown file
+          const postModule = await import(`../posts/${postId}.md`);
+          setPostContent(postModule.default); // .default contains the content of the markdown file
         }
-        const text = await postResponse.text();
-        setPostContent(text);
       } catch (err) {
         setError("Failed to load post content");
       }

@@ -1,21 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import postsData from "../posts/index.json"; // Import the JSON data directly
 
 const HomePage = () => {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const response = await fetch("/posts/index.json");
-        const data = await response.json();
-        setPosts(data);
-      } catch (error) {
-        console.error("Failed to fetch posts:", error);
-      }
-    };
-
-    fetchPosts();
+    // Directly using imported postsData instead of fetching it
+    setPosts(postsData);
   }, []);
 
   return (
