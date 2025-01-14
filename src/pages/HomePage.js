@@ -1,14 +1,32 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import postsData from "../posts/index.json"; // Import the JSON data directly
 
 const HomePage = () => {
   const [posts, setPosts] = useState([]);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Directly using imported postsData instead of fetching it
-    setPosts(postsData);
+    const fetchPostsData = async () => {
+      try {
+        const indexResponse = await fetch(
+          `${process.env.PUBLIC_URL}/posts/index.json`
+        ); // Fetch the post metadata
+        if (!indexResponse.ok) {
+          throw new Error("Failed to load post metadata");
+        }
+        const postsData = await indexResponse.json();
+        setPosts(postsData);
+      } catch (err) {
+        setError("Failed to load posts");
+      }
+    };
+
+    fetchPostsData();
   }, []);
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
 
   return (
     <div className="bg-lightgray min-h-screen py-12 px-6 md:px-20">

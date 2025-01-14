@@ -1,9 +1,9 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom"; // Changed to BrowserRouter
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import PostPage from "./pages/PostPage";
-import Header from "./components/Header"; // Import Header
-import Footer from "./components/Footer"; // Import Footer
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 const App = () => {
   return (
