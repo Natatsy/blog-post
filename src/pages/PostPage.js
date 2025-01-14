@@ -2,32 +2,39 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
-import postsData from "../posts/index.json"; // Importing from src/posts/index.json
 
 const PostPage = () => {
   const { postId } = useParams();
   const [postContent, setPostContent] = useState("");
+  const [post, setPost] = useState(null);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchPostContent = async () => {
+    const fetchPostData = async () => {
       try {
-        const response = await fetch(`/posts/${postId}.md`);
-        if (!response.ok) {
-          throw new Error("Post not found");
+        // Fetch index.json from the public/posts directory
+        const indexResponse = await fetch("/posts/index.json");
+        if (!indexResponse.ok) {
+          throw new Error("Failed to load post metadata");
         }
-        const text = await response.text();
+        const postsData = await indexResponse.json();
+        const currentPost = postsData.find((post) => post.slug === postId);
+        setPost(currentPost);
+
+        // Fetch the Markdown content of the specific post
+        const postResponse = await fetch(`/posts/${postId}.md`);
+        if (!postResponse.ok) {
+          throw new Error("Post content not found");
+        }
+        const text = await postResponse.text();
         setPostContent(text);
       } catch (err) {
         setError("Failed to load post content");
       }
     };
 
-    fetchPostContent();
+    fetchPostData();
   }, [postId]);
-
-  // Find the post by slug in the postsData array
-  const post = postsData.find((post) => post.slug === postId);
 
   if (error) {
     return <div>Error: {error}</div>;

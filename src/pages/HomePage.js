@@ -1,9 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import postsData from "../posts/index.json"; // Importing from src/posts/index.json
 
 const HomePage = () => {
-  const [posts] = useState(postsData);
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const response = await fetch("/posts/index.json");
+        const data = await response.json();
+        setPosts(data);
+      } catch (error) {
+        console.error("Failed to fetch posts:", error);
+      }
+    };
+
+    fetchPosts();
+  }, []);
 
   return (
     <div className="bg-lightgray min-h-screen py-12 px-6 md:px-20">
@@ -24,7 +37,7 @@ const HomePage = () => {
               </h2>
               <p className="text-gray-600 mt-5">{post.excerpt}</p>
               <Link
-                to={`/post/${post.slug}`} // Corrected line: referencing post.slug
+                to={`/post/${post.slug}`}
                 className="text-primary mt-4 inline-block hover:text-blue-500 hover:no-underline"
               >
                 Read more
