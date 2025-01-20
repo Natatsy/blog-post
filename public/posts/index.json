@@ -13,5 +13,10 @@
     "title": "Why I Recommend FreeCodeCamp as a Learning Resource",
     "excerpt": "When I started learning web development, I didn’t know where to begin. There are so many online resources available, but I was looking for something that was not only easy to understand but also free.  ",
     "slug": "third-post"
+  },
+  {
+    "title": "Best Practices for Using APIs within React",
+    "excerpt": " In the modern web development landscape, APIs (Application Programming Interfaces) play a crucial role in providing data and enabling communication between different services. React, as a popular JavaScript library for building user interfaces, seamlessly integrates with APIs, making it easier to develop dynamic and responsive web applications. In this article, we'll explore the best practices for using APIs within React applications, ensuring smooth data fetching and handling. ",
+    "slug": "fourth-post"
   }
 ]

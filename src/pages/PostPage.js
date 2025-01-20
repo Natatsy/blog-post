@@ -7,6 +7,7 @@ const PostPage = () => {
   const { postId } = useParams();
   const [postContent, setPostContent] = useState("");
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -19,17 +20,28 @@ const PostPage = () => {
         }
         const text = await response.text();
         setPostContent(text);
-      } catch (err) {
-        console.error("Error fetching markdown:", err);
-        setError(err.message);
+      } catch (error) {
+        console.error("Error fetching markdown:", error);
+        setError(error.message);
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchData();
   }, [postId]);
 
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
   if (error) {
-    return <div>Error: {error}</div>;
+    return (
+      <div className="error-container">
+        <p>Error: {error}</p>
+        <button onClick={() => window.location.reload()}>Retry</button>
+      </div>
+    );
   }
 
   return (
@@ -51,4 +63,4 @@ const PostPage = () => {
   );
 };
 
-export default PostPage; // <-- Make sure this line exists
+export default PostPage;
