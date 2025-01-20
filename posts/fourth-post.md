@@ -1,6 +1,6 @@
-# Best Practices for Using APIs with React
+![Header Image](/images/code.jpg)
 
-![Image of API](code.jpg)
+# Best Practices for Using APIs with React
 
 ## Introduction
 
