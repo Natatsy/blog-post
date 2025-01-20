@@ -4,6 +4,8 @@
 ![Image of API](/images/code.jpg)
 ![Image of API](./images/code.jpg)
 ![Image of API](images/code.jpg)
+![Image of API](code.jpg)
+![Image of API](/code.jpg)
 
 ## Introduction
 
