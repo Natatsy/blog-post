@@ -1,5 +1,8 @@
 # Best Practices for Using APIs with React
 
+![Image of API](/build/images/code.jpg)
+![Image of API](/images/code.jpg)
+![Image of API](./images/code.jpg)
 ![Image of API](images/code.jpg)
 
 ## Introduction
