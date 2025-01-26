@@ -14,9 +14,9 @@ const PostPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(
-          `${process.env.PUBLIC_URL}/posts/${postId}.md`
-        );
+        const markdownFilePath = `/posts/${postId}.md`;
+        console.log(`Fetching markdown file: ${markdownFilePath}`);
+        const response = await fetch(markdownFilePath);
         if (!response.ok) {
           throw new Error("Failed to fetch markdown file");
         }
