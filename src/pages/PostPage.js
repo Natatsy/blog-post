@@ -17,11 +17,11 @@ const PostPage = () => {
         const response = await fetch(
           `${process.env.PUBLIC_URL}/posts/${postId}.md`
         );
-
         if (!response.ok) {
           throw new Error("Failed to fetch markdown file");
         }
         const text = await response.text();
+        setPostContent(text);
         const { data, content } = matter(text); // Parse front matter and content
         setPostContent(content); // Set the Markdown content
         setPostTitle(data.title || postId.replace("-", " ").toUpperCase()); // Set the post title
@@ -32,14 +32,11 @@ const PostPage = () => {
         setLoading(false);
       }
     };
-    SVGAnimated;
     fetchData();
   }, [postId]);
-
   if (loading) {
     return <div>Loading...</div>;
   }
-
   if (error) {
     return (
       <div className="error-container">
@@ -48,12 +45,12 @@ const PostPage = () => {
       </div>
     );
   }
-
   return (
     <div className="post-page bg-gray-50 py-12">
       <main className="container mx-auto px-3">
         <article className="bg-white p-12 rounded-lg shadow-xl max-w-3xl mx-auto">
           <h1 className="text-3xl font-semibold text-gray-700 mb-8 text-center">
+            {postId.replace("-", " ").toUpperCase()}
             {postTitle}
           </h1>
           <ReactMarkdown
@@ -67,5 +64,4 @@ const PostPage = () => {
     </div>
   );
 };
-
 export default PostPage;
