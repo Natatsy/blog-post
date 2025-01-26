@@ -4,7 +4,7 @@ date: 2025-01-25
 author: Nataliya Tsytovych
 ---
 
-![A picture of internet](/src/images/code.jpg)
+![A picture of internet](/images/code.jpg)
 
 ### What is React Native?
 

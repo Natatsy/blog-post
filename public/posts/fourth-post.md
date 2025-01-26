@@ -4,7 +4,7 @@ date: 2025-01-20
 author: Nataliya Tsytovych
 ---
 
-![Header Image](/src/images/code.jpg)
+![Header Image](/images/code.jpg)
 
 ### Introduction
 
