@@ -14,9 +14,9 @@ const PostPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const markdownFilePath = `/posts/${postId}.md`;
-        console.log(`Fetching markdown file: ${markdownFilePath}`);
-        const response = await fetch(markdownFilePath);
+        const response = await fetch(
+          `${process.env.PUBLIC_URL}/posts/${postId}.md`
+        );
         if (!response.ok) {
           throw new Error("Failed to fetch markdown file");
         }
@@ -58,15 +58,6 @@ const PostPage = () => {
           <ReactMarkdown
             rehypePlugins={[rehypeRaw]}
             className="prose lg:prose-xl"
-            components={{
-              img: ({ node, ...props }) => (
-                <img
-                  {...props}
-                  alt={props.alt}
-                  style={{ maxWidth: "100%", height: "auto" }}
-                />
-              ),
-            }}
           >
             {postContent}
           </ReactMarkdown>
