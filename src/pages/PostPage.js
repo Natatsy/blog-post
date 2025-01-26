@@ -58,6 +58,15 @@ const PostPage = () => {
           <ReactMarkdown
             rehypePlugins={[rehypeRaw]}
             className="prose lg:prose-xl"
+            components={{
+              img: ({ node, ...props }) => (
+                <img
+                  {...props}
+                  alt={props.alt}
+                  style={{ maxWidth: "100%", height: "auto" }}
+                />
+              ),
+            }}
           >
             {postContent}
           </ReactMarkdown>
