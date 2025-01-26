@@ -32,7 +32,7 @@ const PostPage = () => {
         setLoading(false);
       }
     };
-
+    SVGAnimated;
     fetchData();
   }, [postId]);
 
