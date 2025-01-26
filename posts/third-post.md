@@ -1,3 +1,11 @@
+---
+title: Why I Recommend FreeCodeCamp as a Learning Resource
+date: 2025-01-14
+author: Nataliya Tsytovych
+---
+
+# Why I Recommend FreeCodeCamp as a Learning Resource
+
 When I started learning web development, I didn’t know where to begin. There are so many online resources available, but I was looking for something that was not only easy to understand but also free. That’s when I found FreeCodeCamp, and it has been one of the best learning tools I’ve come across.
 
 FreeCodeCamp is a completely free website that offers coding lessons on everything from basic HTML and CSS to advanced JavaScript and full-stack development. The lessons are structured in a way that allows you to learn at your own pace, and they cover all the key concepts needed to become a web developer. One of the things I really like about FreeCodeCamp is how interactive the lessons are. Instead of just reading about coding, you actually get to write and test your code directly in the browser. This hands-on experience helped me understand how coding works and gave me the confidence to try building my own projects.

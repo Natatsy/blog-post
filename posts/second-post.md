@@ -1,3 +1,11 @@
+---
+title: My Experience with React.js
+date: 2025-01-14
+author: Nataliya Tsytovych
+---
+
+# My Experience with React.js
+
 One of the most exciting technologies I’ve learned recently is React.js. React is a powerful JavaScript library that helps developers build user interfaces for web applications. Unlike regular HTML and JavaScript, React focuses on creating components, which are like reusable building blocks of a webpage or app. These components can be combined to create complex UIs in a modular way.
 
 When I first started learning React, I found it a bit tricky. There were new concepts to grasp, like components, props, and state. But the more I practiced, the clearer it became. I learned that React's biggest advantage is that it makes building complex websites easier and more organized. Instead of writing one big chunk of code, React allows you to break everything down into smaller, manageable pieces (components), which can be reused throughout the app.
