@@ -49,7 +49,7 @@ const PostPage = () => {
       <main className="container mx-auto px-3">
         <article className="bg-white p-12 rounded-lg shadow-xl max-w-3xl mx-auto">
           <h1 className="text-3xl font-semibold text-gray-700 mb-8 text-center">
-            {postTitle}
+            {postId.replace("-", " ").toUpperCase()}
           </h1>
           <ReactMarkdown
             rehypePlugins={[rehypeRaw]}
