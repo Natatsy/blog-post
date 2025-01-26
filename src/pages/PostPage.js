@@ -17,6 +17,7 @@ const PostPage = () => {
         const response = await fetch(
           `${process.env.PUBLIC_URL}/posts/${postId}.md`
         );
+
         if (!response.ok) {
           throw new Error("Failed to fetch markdown file");
         }
