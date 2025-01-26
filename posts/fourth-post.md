@@ -4,21 +4,15 @@ date: 2025-01-20
 author: Nataliya Tsytovych
 ---
 
-![Header Image](/images/code.jpg)
+![Header Image](/src/images/code.jpg)
 
-# Best Practices for Using APIs with React
-
-## Introduction
+### Introduction
 
 APIs (Application Programming Interfaces) are tools that allow different programs to talk to each other. When building websites with React, APIs are super helpful for fetching and displaying data from other services. In this article, we’ll talk about some best practices for using APIs in your React apps to make sure everything runs smoothly and efficiently.
 
-## Best Practices
+### Best Practices
 
-### 1. Use Axios or Fetch to Get Data
-
-You can use either the `fetch()` function or the Axios library to get data from APIs. Axios is often preferred because it has extra features like automatic error handling and easy JSON parsing.
-
-#### Example with Axios:
+##### Example with Axios:
 
 ```javascript
 import axios from "axios";
@@ -33,11 +27,11 @@ const fetchData = async () => {
 };
 ```
 
-### 2. Don’t Fetch Data on Every Page Load
+#### 2. Don’t Fetch Data on Every Page Load
 
 It’s important to avoid fetching data every time the page reloads. To prevent this, use React's useEffect hook to fetch data only when the page first loads.
 
-#### Example:
+##### Example:
 
 ```javascript
 import { useEffect, useState } from "react";
@@ -72,15 +66,15 @@ const DataComponent = () => {
 };
 ```
 
-### 3. Handle Errors Properly
+#### 3. Handle Errors Properly
 
 Sometimes, things can go wrong when fetching data, like if the server is down. It’s important to handle these errors so the page doesn’t break. You can do this using try-catch or .catch().
 
-### 4. Show a Loading Indicator
+#### 4. Show a Loading Indicator
 
 While waiting for the data to load, show a loading spinner or message so users know something is happening. This helps avoid confusion.
 
-### 5. Keep API Keys Safe
+#### 5. Keep API Keys Safe
 
 f you’re using an API that requires a key, don’t leave it in your code. Instead, use environment variables (like .env files) to store them safely.
 
@@ -88,6 +82,6 @@ Example .env:
 
 REACT_APP_API_KEY=your_api_key_here
 
-## Conclusion
+### Conclusion
 
 By following these simple tips, you’ll make sure that your React app works well with APIs. Proper error handling, showing loading states, and keeping your keys safe are all important steps for building a smooth and secure app.
