@@ -1,3 +1,9 @@
+---
+title: Getting Started with React Native
+date: 2025-01-25
+author: Nataliya Tsytovych
+---
+
 # Getting Started with React Native: Build Apps for Android and iOS
 
 ![A picture of internet](./images/internet.jpg)
