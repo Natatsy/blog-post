@@ -1,8 +1,4 @@
----
-title: My Experience with React.js
-date: 2025-01-14
-author: Nataliya Tsytovych
----
+# My Experience with React.js
 
 One of the most exciting technologies I’ve learned recently is React.js. React is a powerful JavaScript library that helps developers build user interfaces for web applications. Unlike regular HTML and JavaScript, React focuses on creating components, which are like reusable building blocks of a webpage or app. These components can be combined to create complex UIs in a modular way.
 

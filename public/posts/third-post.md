@@ -1,8 +1,4 @@
----
-title: Why I Recommend FreeCodeCamp as a Learning Resource
-date: 2025-01-14
-author: Nataliya Tsytovych
----
+# Why I Recommend FreeCodeCamp as a Learning Resource
 
 When I started learning web development, I didn’t know where to begin. There are so many online resources available, but I was looking for something that was not only easy to understand but also free. That’s when I found FreeCodeCamp, and it has been one of the best learning tools I’ve come across.
 

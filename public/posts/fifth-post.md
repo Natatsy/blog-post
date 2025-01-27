@@ -1,10 +1,6 @@
----
-title: Getting Started with React Native
-date: 2025-01-25
-author: Nataliya Tsytovych
----
+# Getting Started with React Native
 
-![A picture of internet](/images/code.jpg)
+![A picture of internet](/images/internet.jpg)
 
 ### What is React Native?
 
