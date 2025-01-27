@@ -1,10 +1,6 @@
----
-title: Best Practices for Using APIs with React
-date: 2025-01-20
-author: Nataliya Tsytovych
----
+# Best Practices for Using APIs with React
 
-![Header Image](/images/code.jpg)
+![API](/images/code.jpg)
 
 ### Introduction
 
