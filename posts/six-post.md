@@ -1,6 +1,6 @@
 # What is Password Hashing?
 
-![Password](/images/password.png/)
+![Password](/images/password.png)
 
 Password hashing is a cryptographic process used to securely store passwords. Instead of saving a password in plain text, hashing converts it into an irreversible string of characters. This ensures that even if a database is breached, attackers cannot easily retrieve the original password.
 
