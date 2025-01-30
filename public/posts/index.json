@@ -23,5 +23,10 @@
     "title": "Getting Started with React Native: Build Apps for Android and iOS",
     "excerpt": "What is React Native? React Native is a popular framework created by Facebook that allows developers to build mobile applications for Android and iOS using JavaScript and React. It provides a way to create native apps with one codebase, saving time and effort while delivering a smooth, native-like experience.",
     "slug": "fifth-post"
+  },
+  {
+    "title": "What is Password Hashing?",
+    "excerpt": "Password hashing is a cryptographic process used to securely store passwords. Instead of saving a password in plain text, hashing converts it into an irreversible string of characters. This ensures that even if a database is breached, attackers cannot easily retrieve the original password.",
+    "slug": "six-post"
   }
 ]
